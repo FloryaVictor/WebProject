@@ -1,5 +1,20 @@
 #!/bin/bash
 
+source ../conf.sh
+
+if [ -d pgdata ]; then
+  rm -r pgdata
+fi
+
+
+for name in $(docker ps -a --format "{{.Names}}")
+do
+  if [ "$name" == "$DB_DOCKER_CONTAINER" ]
+  then
+    docker container rm $DB_DOCKER_CONTAINER
+    break
+  fi
+done;
 
 for name in $(docker images --format "{{.Repository}}")
 do
@@ -10,7 +25,4 @@ do
   fi
 done;
 
-docker build -t $DB_DOCKER_IMG .
-
-PWD=$(pwd)
-docker container run --rm -d --name=$DB_DOCKER_CONTAINER -p $DB_PORT:5432 -e PGDATA=/pgdata -v $PWD/pgdata:/pgdata $DB_DOCKER_IMG
+docker build -t "$DB_DOCKER_IMG" .
