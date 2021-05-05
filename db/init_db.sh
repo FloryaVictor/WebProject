@@ -1,12 +1,5 @@
 #!/bin/bash
 
-source ../conf.sh
-
-if [ -d pgdata ]; then
-  rm -r pgdata
-fi
-
-
 for name in $(docker ps -a --format "{{.Names}}")
 do
   if [ "$name" == "$DB_DOCKER_CONTAINER" ]
