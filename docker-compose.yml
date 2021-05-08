@@ -3,18 +3,19 @@ version: "3"
 services:
   bd:
     image: postgres
-    container_name: db_cnt
+    container_name: db
     restart: always
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=docker
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
   adminer:
     image: adminer
+    container_name: adminer
     restart: always
     ports:
       - "8080:8080"
@@ -22,8 +23,10 @@ services:
     build: ./backend
     container_name: backend
     restart: always
+    volumes:
+      - ./backend:/app
     environment:
-      - APP_NAME=myapp
-      - DB_USER=docker
+      - APP_NAME=webaplication
+      - DB_USER=${DB_USER}
     ports:
       - "5000:5000"
