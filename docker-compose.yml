@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  bd:
+    image: postgres
+    container_name: db_cnt
+    restart: always
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=docker
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"

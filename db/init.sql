@@ -20,6 +20,13 @@ CREATE TABLE product(
     price money DEFAULT 0.0
 );
 
+CREATE TABLE product_meta(
+    product_id integer REFERENCES product(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    category text,
+    tags text[]
+);
+
+
 CREATE TABLE orders(
     id SERIAL PRIMARY KEY,
     customer_id integer REFERENCES customer(id) ON DELETE RESTRICT ON UPDATE CASCADE,
