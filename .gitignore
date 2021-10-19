@@ -132,3 +132,6 @@ dmypy.json
 
 # Pythons virtual environment
 backend/venv
+
+venv
+db/backups/*
