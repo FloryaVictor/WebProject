@@ -16,11 +16,9 @@ class Model:
     def __str__(self) -> str:
         return self.to_json()
 
-    def get_no_id(self, id_names: tuple = None) -> dict:
-        cp = copy(self.__dict__)
-        for name in id_names:
-            del cp[name]
-        return cp
+    def content(self) -> dict:
+        fields = self.__dict__
+        return {name: fields[name] for name in fields if fields[name] is not None}
 
 
 class User(Model):
