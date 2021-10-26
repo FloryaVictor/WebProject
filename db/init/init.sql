@@ -68,8 +68,8 @@ CREATE TABLE restaurant_product (
 
 -- some dummy entries
 INSERT INTO users(email, name, password, phone_number, address) VALUES 
-    ('pupkin@mail.ru', 'vasya', 'strong pass', '88005553535', 'улица Пушнкина, 4'),
-    ('sergeich@gmail.com', 'sergey', 'ochen strong pass', '89231721754', 'Омск');
+    ('al@mail.ru', 'Alex', 'pass1234', '88005553535', 'Москва, улица Пушнкина, 4'),
+    ('serg@gmail.com', 'Sergey', 'sadlSd#21%!', '89231721754', 'Омск');
 
 INSERT INTO restaurant(name, address, rating, description) VALUES 
     ('Moscow burger', 'а где мы?', 0.0, 'не вкусно'),

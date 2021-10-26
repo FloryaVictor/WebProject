@@ -43,13 +43,13 @@ class Product(Model):
         self.photo_url = photo_url
 
 class Order(Model):
-    def __init__(self, id=None, price=None, date=None, customer_id=None, restautrant_id=None, delivery_id=None):
+    def __init__(self, id=None, price=None, date=None, customer_id=None, restaurant_id=None, delivery_id=None):
         super().__init__()
         self.id = id
         self.price = price
         self.date = date
         self.customer_id = customer_id
-        self.restautrant_id = restautrant_id
+        self.restaurant_id = restaurant_id
         self.delivery_id = delivery_id
 
 class Delivery(Model):
